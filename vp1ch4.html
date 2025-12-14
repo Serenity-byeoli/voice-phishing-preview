@@ -1,15 +1,292 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-	<meta charset="UTF-8">
-	<title>4.예방 방법</title>
+    <meta charset="UTF-8">
+    <title>4.예방 방법</title>
+
+    <style>
+        /* 기본 스타일 */
+        body {
+            background-color: #080C0C;
+            color: #f2f2f2;
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* 배경 이미지 */
+        .bg-section {
+            width: 100%;
+            height: 700px;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: 40px;
+        }
+
+        .section1 { background-image: url("ab.png"); }
+        .section2 { background-image: url("vs.png"); }
+
+        /* 컨테이너 */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* 콜아웃 */
+        .callout {
+            background-color: #00ADB5;
+            color: #080C0C;
+            padding: 25px;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-bottom: 40px;
+        }
+
+        /* 예방 수칙 그리드 */
+        .scam-tips-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px 30px;
+            margin-bottom: 80px;
+            padding: 0 20px;
+        }
+
+        /* 개별 카드 */
+        .scam-tip-card {
+            background-color: #2C3337;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 5px solid #00ADB5;
+            position: relative;
+        }
+
+        /* 카드 번호 */
+        .tip-number {
+            color: #00ADB5;
+            font-size: 2em;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* 카드 제목 */
+        .scam-tip-card h3 {
+            font-size: 24px;
+            margin-top: 0;
+            color: #f2f2f2;
+        }
+
+        /* 카드 본문 */
+        .scam-tip-card p {
+            line-height: 1.6;
+            color: #cccccc;
+        }
+
+        /* 리스트 */
+        .scam-tip-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        /* 밑에 배너 */
+        .footer-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px 0;
+            border-top: 2px solid #333;
+            text-align: center;
+        }
+
+        .footer-section h2 {
+            margin-bottom: 10px;
+        }
+
+        .hotline {
+            font-size: 38px;
+            font-weight: bold;
+            color: #00FFFF;
+            margin: 10px 20px;
+            display: inline-block;
+        }
+
+        .footer-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .hotline-group {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        /* 팝업 이미지 */
+        .image-popup {
+            position: absolute;
+            top: -220px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 700px;
+            display: none;
+            z-index: 999;
+        }
+
+        .image-popup img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .image-popup.show {
+            display: block;
+        }
+    </style>
 </head>
+
 <body>
-	<h1>보이스피싱 더는 안돼!</h1>
-	<h1>피할 수 있는 방법은 없을까요?</h1>
-	<h2>링크 확인하는 법<h2>
-	<h2>2단계 인증 켜기</h2>
-	<h2>의심 문구 알아보기</h2>
-	<h2>안전하게 대응하는 법</h2>
+
+    <div class="bg-section section1"></div>
+    <div class="bg-section section2"></div>
+
+    <div class="container">
+
+        <!-- 핵심 요약 -->
+        <div class="callout">
+            지금부터 절대 당하지 않는 <b>8가지 예방 수칙</b>을 확인하세요!
+        </div>
+
+        <div class="scam-tips-grid">
+
+            <!-- 01 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(1, event)">01</span>
+                <h3 onclick="toggleTip(1, event)">모르는 번호는 받지 않기</h3>
+                <p>‘더콜’ 같은 사이트에서 번호를 검색해 스팸 여부 확인하기.</p>
+
+                <div class="image-popup" id="img-1">
+                    <img src="num1.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(2, event)">02</span>
+                <h3 onclick="toggleTip(2, event)">급하게 돈 보낼 것을  요구 → 100% 거짓말</h3>
+                <p>가족이나 기관인 척하며 속이는 방법입니다.</p>
+
+                <div class="image-popup" id="img-2">
+                    <img src="num2.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(3, event)">03</span>
+                <h3 onclick="toggleTip(3, event)">의심 문구 알아두기</h3>
+                <p>아래 문구는 무조건 의심해야 합니다.</p>
+
+                <div class="image-popup" id="img-3">
+                    <img src="num3.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 04 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(4, event)">04</span>
+                <h3 onclick="toggleTip(4, event)">전화를 끊고 직접 확인하기</h3>
+                <p>가족·기관·회사 등 공식 번호로 다시 전화하세요.</p>
+
+                <div class="image-popup" id="img-4">
+                    <img src="num4.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 05 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(5, event)">05</span>
+                <h3 onclick="toggleTip(5, event)">모르는 링크 절대 누르지 않기</h3>
+                <p>악성앱 설치 · 계정 빼앗길 위험.</p>
+
+                <div class="image-popup" id="img-5">
+                    <img src="num5.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 06 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(6, event)">06</span>
+                <h3 onclick="toggleTip(6, event)">개인정보 절대 말하지 않기</h3>
+                <p>전화로 비밀번호·OTP 요구는 100% 거짓말.</p>
+
+                <div class="image-popup" id="img-6">
+                    <img src="num6.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 07 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(7, event)">07</span>
+                <h3 onclick="toggleTip(7, event)">영상통화 또는 목소리 확인</h3>
+                <p>가족인 척 할 경우 대부분 피하려 합니다.</p>
+
+                <div class="image-popup" id="img-7">
+                    <img src="num7.png" alt="관련 이미지">
+                </div>
+            </div>
+
+            <!-- 08 -->
+            <div class="scam-tip-card">
+                <span class="tip-number" onclick="toggleTip(8, event)">08</span>
+                <h3 onclick="toggleTip(8, event)">ATM 돈 보내기 요구 = 즉시 거짓말</h3>
+                <p>기관은 절대 ATM 보내기를 부탁하지 않습니다.</p>
+
+                <div class="image-popup" id="img-8">
+                    <img src="num1.png" alt="관련 이미지">
+                </div>
+            </div>
+
+        </div>
+
+        <!-- 신고 안내 -->
+        <div class="footer-section">
+            <div class="footer-group">
+                <h2>보이스피싱 피해 발생 시 즉시 신고하세요!</h2>
+
+                <div class="hotline-group">
+                    <span class="hotline">🚨 경찰청 112</span>
+                    <span class="hotline">🏦 금융감독원 1332</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 팝업 이미지 JS -->
+    <script>
+        function toggleTip(num, event) {
+            event.stopPropagation();
+
+            document.querySelectorAll(".image-popup")
+                .forEach(p => p.classList.remove("show"));
+
+            const img = document.getElementById("img-" + num);
+            img.classList.toggle("show");
+        }
+
+        document.addEventListener("click", () => {
+            document.querySelectorAll(".image-popup")
+                .forEach(p => p.classList.remove("show"));
+        });
+    </script>
+
 </body>
 </html>
